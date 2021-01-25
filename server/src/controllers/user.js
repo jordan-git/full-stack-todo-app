@@ -20,7 +20,7 @@ export async function handleRegister(req, res) {
         password: hashedPassword,
     });
 
-    const token = jwt.sign({ username }, 'secret');
+    const token = jwt.sign({ username }, process.env.SECRET);
 
     res.cookie('auth', token, { maxAge: 3600, httpOnly: true });
 
